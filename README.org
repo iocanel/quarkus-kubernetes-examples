@@ -4,18 +4,22 @@
   The matrix below shows all possbile combinations between `platforms` and `container image technologies`.
 
 
-  |                             | Kubernetes   | Openshift                     | Knative (on Kubernetes) | Knative (on Openshift)        |
-  |-----------------------------+--------------+-------------------------------+-------------------------+-------------------------------|
-  | Docker                      | jvm + native | bugged                        | jvm + native            | bugged                        |
-  | Jib                         | jvm + native | bugged                        | jvm + native            | bugged                        |
-  | S2i (source)                | not possible | not implemented               | not possible            | not implemented               |
-  | S2i (binary)                | not possible | jvm + native                  | not possible            | jvm + native                  |
-  | Openshift (docker strategy) | not possible | jvm + native (in development) | not possible            | jvm + native (in development) |
-  |-----------------------------+--------------+-------------------------------+-------------------------+-------------------------------|
-  | Tekton                      |              |                               |                         |                               |
-  | Buildpacks                  |              |                               |                         |                               |
-  | Kaniko                      |              |                               |                         |                               |
+  |                             | Kubernetes   | OKD                           | Openshift                     | Knative (on Kubernetes) | Knative (on OKD)              | Knative (on OKD)              | Knative (on Openshift)        |
+  |-----------------------------+--------------+-------------------------------+-------------------------------+-------------------------+-------------------------------+-------------------------------+-------------------------------|
+  | Docker                      | jvm + native | bugged                        | bugged                        | jvm + native            | bugged                        | bugged                        | bugged                        |
+  | Jib                         | jvm + native | bugged                        | bugged                        | jvm + native            | bugged                        | bugged                        | bugged (not supported)        |
+  | S2i (source)                | not possible | not implemeneted              | not implemented               | not possible            | not implemented               | not implemented               | not implemented               |
+  | S2i (binary)                | not possible | jvm + native                  | jvm only                      | not possible            | jvm + native                  | jvm + native                  | jvm only                      |
+  | Openshift (docker strategy) | not possible | jvm + native (in development) | jvm + native (in development) | not possible            | jvm + native (in development) | jvm + native (in development) | jvm + native (in development) |
+  |-----------------------------+--------------+-------------------------------+-------------------------------+-------------------------+-------------------------------+-------------------------------+-------------------------------|
+  | Tekton                      |              |                               |                               |                         |                               |                               |                               |
+  | Buildpacks                  |              |                               |                               |                         |                               |                               |                               |
+  | Kaniko                      |              |                               |                               |                         |                               |                               |                               |
 
+
+  **Note**: The matrix above uses a different column for Openshift and OKD to distinguish between upstream and product, so that its more clear on what is supported and what not.
+  The rest of this document and the examples just use `Openshift` for both (as there are no techincal differences).
+  
 ** Kubernetes
 
   - [[kubernetes-with-docker-example]]
